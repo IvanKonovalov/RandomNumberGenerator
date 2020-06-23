@@ -1,0 +1,24 @@
+.dropdown-item:hover {
+            background-color: DodgerBlue;
+        }
+
+ body {
+     background-attachment: fixed;
+     font-family: 'Roboto', sans-serif;
+}
+
+.btn {
+         color: #fff;
+         background: #9F3ED5;
+         letter-spacing: 2px;
+
+       }
+       .btn:hover {
+         -webkit-transition: .5s all;
+          -moz-transition: .5s all;
+          -o-transition: .5s all;
+          -ms-transition: .5s all;
+          transition: .5s all;
+          background: #AD66D5;
+          border: 1px solid #FFF;
+       }

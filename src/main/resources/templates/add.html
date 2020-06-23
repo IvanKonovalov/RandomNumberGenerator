@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование полиномов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="../static/css/result.css" th:href="@{/css/result.css}" rel="stylesheet" />
+
+
+    <style>
+        .table .thead-light th {
+        width: 160px;
+        }
+    </style>
+</head>
+
+<body>
+<nav style="font-family: 'Open Sans', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container" style="height: 30px;color:white">
+        <a class="btn" href="/"><strong>На главную</strong></a>
+        <em><h6 class="d-none d-md-block" style="color:white">Редактирование полиномов</h6></em>
+    </div>
+
+</nav>
+
+<!--
+TODO: Добавить вывод (успеха|ошибки|повтороного полинома) через уведомление. Подсветить повторный полином в общей таблице
+TODO: Сделать фильтры поиска
+-->
+
+<div class ="container" style="font-family: 'Open Sans', sans-serif;">
+    <h4 class="mt-4"> <strong>Добавить полином: </strong> </h4>
+    <div class="row">
+
+
+            <form method="post">
+                <div class="input-group m-4 ">
+                    <input name="degree" style="height: 40px" type="text" placeholder="Степень" class="form-control">
+                    <input name="polynom" style="height: 40px" type="text" placeholder="Полином вида: 1 123А" class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" style="height: 40px;" type="submit">Добавить</button>
+                    </div>
+                </div>
+            </form>
+
+
+    </div>
+
+    <h4 class="mt-4"> <strong>Список полиномов: </strong> </h4>
+    <div class="row">
+        <table class="table table-striped table-hover table-sm ml-4 mr-4">
+            <form action="/remove" method="post">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Степень</th>
+                    <th scope="col">Полином</th>
+                    <th scope="col">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-secondary" type="submit">Удалить</button>
+                            <button name="deleteAll" class="btn btn-danger" value="true">Удалить все</button>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each = "i : ${polys}"  >
+                    <th scope="row" th:text = "${i.getDegree()}">...</th>
+                    <td scope="col" th:text = "${i.getFullForm()}">...</td>
+                    <td><input type="checkbox" name="removing" th:value="${i.getId()}"/> </td>
+                </tr>
+                </tbody>
+            </form>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

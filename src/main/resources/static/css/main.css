@@ -1,0 +1,68 @@
+.agileits-top {
+          padding: 3em;
+        }
+
+        body {
+          background: #76b852;
+          /* fallback for old browsers */
+          background: -webkit-linear-gradient(to top, #FFF, #876ED7);
+          background: -moz-linear-gradient(to top, #76b852, #8DC26F);
+          background: -o-linear-gradient(to top, #76b852, #8DC26F);
+          background: linear-gradient(to top, #6A48D7, #876ED7);
+          background-size: cover;
+          background-attachment: fixed;
+          font-family: 'Roboto', sans-serif;
+        }
+        .main-w3layouts {
+          padding: 3em 0 1em;
+          width: 35%;
+          margin: 3em auto;
+          background: rgba(0, 0, 0, 0.70);
+          background-size: cover;
+        }
+        h4 {
+          font-size: 1.2em;
+          color: #fff;
+          font-weight: 50;
+          text-transform: capitalize;
+          letter-spacing: 2px;
+          font-family: 'Roboto', sans-serif;
+        }
+       .bot {
+          font-size: 1em;
+          color: #fff;
+          background: #9F3ED5;
+          outline: none;
+          border: 1px solid #9F3ED5;
+          cursor: pointer;
+          padding: 0.9em;
+          -webkit-appearance: none;
+          width: 100%;
+          margin: 2em 0;
+          letter-spacing: 2px;
+        }
+
+        .bot:hover {
+          -webkit-transition: .5s all;
+          -moz-transition: .5s all;
+          -o-transition: .5s all;
+          -ms-transition: .5s all;
+          transition: .5s all;
+          background: #AD66D5;
+          border: 1px solid #FFF;
+        }
+       .green {
+         color: #fff;
+         background: #9F3ED5;
+         letter-spacing: 2px;
+
+       }
+       .green:hover {
+         -webkit-transition: .5s all;
+          -moz-transition: .5s all;
+          -o-transition: .5s all;
+          -ms-transition: .5s all;
+          transition: .5s all;
+          background: #AD66D5;
+          border: 1px solid #FFF;
+       }

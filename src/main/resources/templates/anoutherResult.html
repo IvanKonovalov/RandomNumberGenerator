@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Моделирование СРОС</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="../static/css/result.css" th:href="@{/css/result.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+<nav style="font-family: 'Open Sans', sans-serif;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="btn" href="/"><strong>На главную</strong></a>
+        <em><h6 class="d-none d-md-block" style="color:white">by Ivan Konovalov</h6></em>
+    </div>
+</nav>
+
+<!-- TODO: впихнуть общие элементы в шаблон и подключить его через th:include -->
+
+<div style="font-family: 'Open Sans', sans-serif;" class="container p-3">
+
+
+
+    <div name="CPOCfirst">
+        <!-- Вывод характеристической матрицы -->
+        <div>
+            <h3 th:text="${name}"></h3>
+        </div>
+        <div class="row row-centered" >
+            <div class="col">
+                <div class="row p-3">
+                    <strong class="p-3">Сопровождающая матрица: </strong>
+                    <table class="table table-bordered table-striped table-sm">
+                        <tr th:each = "i : ${Fx}">
+                            <td style="text-align:center;" th:each="j : ${i}" th:text = "${j}">...</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col">
+                <table>
+                    <tr>
+                        <td class="p-3">
+                            <strong>Экспериментальный период: </strong>
+                        </td>
+                        <td class="p-3" th:text="${Tex}"></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">
+                            <strong>  Теоретический период: </strong>
+                        </td>
+                        <td class="p-3" th:text="${Tteo}"/>
+                    </tr>
+                </table>
+            </div>
+
+            <textarea id="Tteo" hidden th:text="${Tteo}"></textarea>
+        </div>
+
+
+        <!-- Список состояний -->
+        <div class="row p-3">
+            <strong>Список состояний: </strong>
+            <textarea id="listOfState" class="form-control" rows="7" th:text=" ${ListOfState}" style="letter-spacing: 8px;" readonly></textarea>
+        </div>
+
+        <!-- Вывод М-последовательности -->
+        <div class="row p-3">
+        <strong> Вес Хэмминга: </strong>
+        <p th:text=${wt}> </p>
+        </div>
+        <div class="row p-3">
+            <strong>Бинарная последовательность: </strong>
+            <textarea id="MState" class="form-control" rows="3" th:text="${MState}" readonly>${MState}</textarea>
+        </div>
+    </div>
+
+    <div name="CPOCsecond">
+        <!-- Вывод характеристической матрицы -->
+        <div>
+            <h3 th:text="${name2}"></h3>
+        </div>
+        <div class="row row-centered" >
+            <div class="col">
+                <div class="row p-3">
+                    <strong class="p-3">Сопровождающая матрица: </strong>
+                    <table class="table table-bordered table-striped table-sm">
+                        <tr th:each = "i : ${Fx2}">
+                            <td style="text-align:center;" th:each="j : ${i}" th:text = "${j}">...</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col">
+                <table>
+                    <tr>
+                        <td class="p-3">
+                            <strong>Экспериментальный период: </strong>
+                        </td>
+                        <td class="p-3" th:text="${Tex2}"></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">
+                            <strong>  Теоретический период: </strong>
+                        </td>
+                        <td class="p-3" th:text="${Tteo2}"/>
+                    </tr>
+                </table>
+            </div>
+
+            <textarea id="Tteo2" hidden th:text="${Tteo2}"></textarea>
+        </div>
+
+
+        <!-- Список состояний -->
+        <div class="row p-3">
+            <strong>Список состояний: </strong>
+            <textarea id="listOfState2" class="form-control" rows="7" th:text=" ${ListOfState2}" style="letter-spacing: 8px;" readonly></textarea>
+        </div>
+
+        <div class="row p-3">
+        <strong> Вес Хэмминга: </strong>
+        <p th:text=${wt2}> </p>
+        </div>
+        <!-- Вывод М-последовательности -->
+        <div class="row p-3">
+            <strong>Бинарная последовательность: </strong>
+            <textarea id="MState2" class="form-control" rows="3" th:text="${MState2}" readonly>${MState}</textarea>
+        </div>
+    </div>
+
+    <div>
+        <h3>Характеристика S-последовательности</h3>
+    </div>
+
+
+    <div class="row p-3">
+        <strong>Период S-последовательности: </strong>
+        <p th:text="${Ts}"></p>
+    </div>
+
+    <textarea hidden id="Ts" th:text = ${Ts}></textarea>
+
+    <textarea id="Slist" hidden th:text = ${Slist}></textarea>
+    <textarea id="AKF" hidden th:text = ${akf}></textarea>
+
+
+    <!-- Автокорреляционная функция -->
+    <div id="chart" class="col-md" style="height: 400px;">
+    </div>
+    <!--    <canvas id="myChart" width="400" height="300"></canvas>-->
+
+</div>
+
+
+
+
+<!-- TODO: Изменить название линий, добавить подписи осям. Узнать, почему акф несимметрична -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+<script>
+
+    anychart.onDocumentLoad(function()  {
+    var MArr = ($("#AKF").val()).split(" ");
+    var T = $('#Ts').val();
+
+    //создаем данные
+    var dataArr = anychart.data.set();
+    var x;
+    for(x = 0;  x < T/10; x++) {
+        dataArr.append({x: x, value: MArr[x]});
+    }
+
+    var chart = anychart.line();
+    var series = chart.spline(dataArr);
+
+    chart.title("АКФ");
+    chart.container("chart").draw();
+});
+</script>
+</body>
+</html>

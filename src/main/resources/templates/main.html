@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор полиномов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="main-w3layouts">
+
+<div class="agileits-top">
+    <div class="row">
+
+        <div class="col m-0 p-0">
+            <form method="get"  action="/degree">
+                <div class="btn-group" role="group">
+                    <button style="height: 30px; width: 150px" class="btn btn-secondary dropdown-toggle  p-0 pr-2 pl-2 green"
+                            type="button" id="dropdownMenuDegrees" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" th:text="(${cd==-1} ? 'Степень' : (${cd}))">
+                        Выбор степени полинома
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuDegrees">
+                        <button name="degree" class="dropdown-item" type="submit" th:each="deg : ${degrees}"
+                                th:text="${deg}" th:value="${deg}">Action</button>
+                    </div>
+                </div>
+            </form>
+
+            <form method="get" action="/degree2">
+                <div class="btn-group" role="group">
+                    <button style="height: 30px; width: 150px" class="btn btn-secondary dropdown-toggle  p-0 pr-2 pl-2 green"
+                            type="button" id="dropdownMenuDegrees2" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" th:text="(${cd2==-1} ? 'Степень' : (${cd2}))">
+                        Выбор степени полинома
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuDegrees2">
+                        <button name="degree2" class="dropdown-item" type="submit" th:each="deg : ${degrees}"
+                                th:text="${deg}" th:value="${deg}">Action</button>
+                    </div>
+                </div>
+            </form>
+
+
+            <form method="get" action="/degree3">
+                <div class="btn-group" role="group">
+                    <button style="height: 30px; width: 150px" class="btn btn-secondary dropdown-toggle  p-0 pr-2 pl-2 green"
+                            type="button" id="dropdownMenuDegrees3" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" th:text="(${cd3==-1} ? 'Степень' : (${cd3}))">
+                        Выбор степени полинома
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuDegrees3">
+                        <button name="degree3" class="dropdown-item" type="submit" th:each="deg : ${degrees}"
+                                th:text="${deg}" th:value="${deg}">Action</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col m-0 p-0">
+        <form method="post" action="/polynoms">
+
+                <select style="height: 30px" class="btn custom-select  p-0  pr-5 pl-1 " name="polynomId" >
+                    <option disabled selected>Выберите полином  <span class="caret"></span> </option>
+                    <option th:each="prod : ${polynoms}" th:text="${prod.fullForm}"
+                            th:value="${prod.getId()}"
+                            th:selected="${pid==(prod.getId())}"></option>
+                </select>
+
+
+                <select style="height: 30px" class="btn custom-select  p-0  pr-5 pl-1 " name="polynomId2" id ="polynomId2">
+                    <option disabled selected>Выберите полином  <span class="caret"></span> </option>
+                    <option th:each="prod : ${polynoms2}" th:text="${prod.fullForm}"
+                            th:value="${prod.getId()}"
+                            th:selected="${pid2==(prod.getId())}"></option>
+                </select>
+
+                <select style="height: 30px" class="btn custom-select  p-0  pr-5 pl-1 " name="polynomId3" id ="polynomId3">
+                    <option disabled selected>Выберите полином  <span class="caret"></span> </option>
+                    <option th:each="prod : ${polynoms3}" th:text="${prod.fullForm}"
+                            th:value="${prod.getId()}"
+                            th:selected="${pid3==(prod.getId())}"></option>
+                </select>
+
+            <button type="submit"   name="submit"
+                    class="bot">
+                Подтвердить
+            </button>
+        </form>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
